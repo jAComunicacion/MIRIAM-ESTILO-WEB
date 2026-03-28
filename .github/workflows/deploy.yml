@@ -18,7 +18,7 @@ jobs:
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_SENIA }}
+          password: ${{ secrets.FTP_PASSWORD }}
           # Excluimos carpetas que no van al servidor web directo
           exclude: |
             **/.git*

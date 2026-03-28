@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard Cliente - Miriam Schild Fragancias</title>
+
+  <!-- Google Analytics 4 (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="tus-credenciales-gsc" />
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Archivos MIRIAM CSS -->
+  <link href="assets/miriam/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/miriam/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/miriam/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <!-- AOS Animation CSS -->
+  <link href="assets/miriam/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Estilos personalizados para los botones grandes tipo tarjeta */
+    .btn-dashboard {
+      background-color: var(--blanco);
+      border: 3px solid transparent;
+      border-radius: 10px;
+      padding: 30px 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Pseudo-elemento para el fondo de imagen suave al 15% */
+    .btn-dashboard::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    /* Desaparece la imagen en hover */
+    .btn-dashboard:hover::before {
+      opacity: 0;
+    }
+
+    /* Asignar imagenes a cada tarjeta */
+    #btnDash1::before {
+      background-image: url('assets/img/team-1.jpg');
+    }
+
+    #btnDash2::before {
+      background-image: url('assets/img/team-2.jpg');
+    }
+
+    #btnDash3::before {
+      background-image: url('assets/img/team-3.jpg');
+    }
+
+    #btnDash4::before {
+      background-image: url('assets/img/team-4.jpg');
+    }
+
+    /* Elevar el contenido sobre el fondo */
+    .btn-dashboard>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Interacción Hover: Se vuelve azul con bordes marcados y sombra alta */
+    .btn-dashboard:hover {
+      background-color: var(--primary);
+      border: 3px solid #1c3b6e;
+      /* Un azul apenas un poco mas oscuro como borde */
+      transform: translateY(-8px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+    }
+
+    .btn-dashboard:hover * {
+      color: var(--blanco) !important;
+    }
+
+    .btn-dashboard h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+    }
+
+    /* Interlineado reducido a la mitad para los datos */
+    .datos-cliente p {
+      line-height: 1.2;
+      margin-bottom: 8px;
+      color: var(--gris);
+      transition: all 0.4s ease;
+      font-size: 14px;
+    }
+
+    .transition-p {
+      line-height: 1.2;
+      transition: all 0.4s ease;
+    }
+
+    /* Efecto del avatar circular */
+    .circle-avatar:hover {
+      border-color: var(--secondary) !important;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Encabezado ======= -->
+  <header id="header" class="header-fixed" style="background: rgba(52, 59, 64, 0.9);">
+    <div class="container d-flex justify-content-between align-items-center" style="height: 100%;">
+      <div id="logo">
+        <a href="index.html"><img src="assets/img/logo.png" alt="" style="max-height: 40px;"></a>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu" style="margin-top: 10px;">
+          <li><a href="#" id="btnCerrarSesion"
+              style="color: var(--blanco); border-bottom: 2px solid var(--secondary);">Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= DASHBOARD CLIENTES (Estilo heredado de "Somos") ======= -->
+
+    <section id="team"
+      style="background: var(--turquesa); padding-top: 150px; padding-bottom: 120px; min-height: 100vh;">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h3 class="section-title" style="color: var(--blanco);">Bienvenido/a, <span id="dashName"></span></h3>
+          <p class="section-description" style="color: rgba(255,255,255,0.9); font-weight: 500;">
+            Este es tu espacio personal estructurado en un entorno privado.
+          </p>
+        </div>
+
+        <!-- Fila que distribuye las 4 tarjetas (botones) -->
+        <div class="row align-items-stretch">
+
+          <!-- Boton 1: MIS DATOS -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="btn-dashboard w-100" id="btnDash1" data-aos="fade-up" data-aos-delay="100">
+              <div class="datos-cliente text-center w-100 d-none" id="contDatos">
+
+                <!-- Avatar Circular -->
+                <div style="position: relative; margin-bottom: 15px;">
+                  <div class="circle-avatar"
+                    style="width: 70px; height: 70px; background-color: var(--light); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid var(--primary); overflow: hidden; position: relative; transition: all 0.3s ease;">
+                    <i class="fa fa-camera" id="avatarIcon" style="color: var(--primary); font-size: 24px;"></i>
+                    <img id="avatarImage" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                    <input type="file" id="avatarInput" accept="image/*"
+                      style="opacity: 0; position: absolute; top:0; left:0; width:100%; height:100%; cursor: pointer;"
+                      title="Cargar Avatar">
+                  </div>
+                </div>
+
+                <!-- TARJETA DE DATOS PERSONALES-->
+                <p><strong id="lblNombre" style="font-size: 16px;"></strong> <strong id="lblApellido"
+                    style="font-size: 16px;"></strong></p>
+                <p><span id="lblEmail" style="font-size: 12px; word-break: break-all;"></span></p>
+
+                <!-- WApp con el logo en el piso superior -->
+                <p style="margin-top: 10px; margin-bottom: 0;"><i class="fa fa-whatsapp"
+                    style="color: #3f25d3; font-size: 22px;"></i></p>
+                <p><span id="lblWapp" style="font-size: 14px; font-weight: 500;"></span></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Boton 2: PROXIMOS EVENTOS -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="btn-dashboard w-100" id="btnDash2" data-aos="fade-up" data-aos-delay="200">
+              <h4>Proximos<br>Eventos</h4>
+              <p style="color:var(--gris); font-size:13px; margin:0;" class="transition-p">Entérate de nuestras próximas
+                novedades.</p>
+            </a>
+          </div>
+
+          <!-- Boton 3: MIS COMPRAS Y RESERVAS -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="btn-dashboard w-100" id="btnDash3" data-aos="fade-up" data-aos-delay="300">
+              <h4>Mis Compras<br>y Reservas</h4>
+              <p style="color:var(--gris); font-size:13px; margin:0;" class="transition-p">Explora tu historial con
+                nosotros.</p>
+            </a>
+          </div>
+
+          <!-- Boton 4: QUIERO SER PARTE -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="btn-dashboard w-100" id="btnDash4" data-aos="fade-up" data-aos-delay="400">
+              <h4>Quiero<br>Ser Parte</h4>
+              <p style="color:var(--gris); font-size:13px; margin:0;" class="transition-p">Únete a nuestra prestigiosa
+                comunidad.</p>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= PIE DE PAGINA ======= -->
+  <footer id="footer">
+    <div class="container" style="padding: 20px 0;">
+      <div class="copyright text-center" style="color: var(--blanco);">
+        &copy; Copyright <strong>MiriamSchild® </strong>2025
+      </div>
+      <div class="credits">
+        designed by <a href="">jA Comunicacion</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Miriam JS Files -->
+  <script src="assets/miriam/jquery/jquery.min.js"></script>
+  <script src="assets/miriam/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Animaciones -->
+  <script src="assets/miriam/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Inicializar animaciones
+      if (typeof AOS !== 'undefined') {
+        AOS.init();
+      }
+
+      // Verificar usuario en BD local
+      const datosStr = localStorage.getItem('clienteDatosWeb');
+      if (datosStr) {
+        // Cargar datos en dashboard
+        const datos = JSON.parse(datosStr);
+        document.getElementById('dashName').textContent = datos.name || 'Cliente';
+        document.getElementById('lblNombre').textContent = datos.name || '';
+        document.getElementById('lblApellido').textContent = datos.surname || '';
+        document.getElementById('lblEmail').textContent = datos.email || '';
+        document.getElementById('lblWapp').textContent = datos.whatsapp || '';
+
+        document.getElementById('contDatos').classList.remove('d-none');
+
+        // Cargar avatar si existe en formato base64
+        const savedAvatar = localStorage.getItem('clienteAvatar');
+        if (savedAvatar) {
+          document.getElementById('avatarImage').src = savedAvatar;
+          document.getElementById('avatarImage').style.display = 'block';
+          document.getElementById('avatarIcon').style.display = 'none';
+        }
+      } else {
+        // Redirigir al index para evitar accesos vacios
+        window.location.href = 'index.html';
+      }
+
+      // Logica para Salir
+      document.getElementById('btnCerrarSesion').addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = 'index.html';
+      });
+
+      // Lógica de subida de avatar
+      const avatarInput = document.getElementById('avatarInput');
+      avatarInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const base64Img = event.target.result;
+            // Guardar localmente
+            localStorage.setItem('clienteAvatar', base64Img);
+            // Mostrar imagen
+            document.getElementById('avatarImage').src = base64Img;
+            document.getElementById('avatarImage').style.display = 'block';
+            document.getElementById('avatarIcon').style.display = 'none';
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -19,6 +19,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASS }}
+          # Especificamos la carpeta raíz de Donweb
+          server-dir: public_html/
           # Excluimos carpetas que no van al servidor web directo
           exclude: |
             **/.git*

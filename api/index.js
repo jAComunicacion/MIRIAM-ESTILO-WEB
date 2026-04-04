@@ -4,15 +4,18 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const authRoutes = require('./routes/auth');
+const contactRoutes = require('./routes/contact');
 
 const app = express();
 
 // Middlewares
 app.use(cors()); // Permite peticiones desde el Frontend (HTML)
 app.use(express.json()); // Permite recibir JSON en peticiones POST
+app.use(express.urlencoded({ extended: true })); // Permite recibir formularios estándar
 
 // Definición de Rutas API
 app.use('/api/auth', authRoutes);
+app.use('/api/contact', contactRoutes);
 
 app.get('/', (req, res) => {
   res.send('API Node.js de Miriam Schild funcionando 🚀');

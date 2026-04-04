@@ -19,7 +19,9 @@ app.get('/', (req, res) => {
 });
 
 // Variables de Entorno
+// Puerto asignado por el entorno (DonWeb requiere process.env.PORT)
 const PORT = process.env.PORT || 5000;
+
 const MONGO_URI = process.env.MONGO_URI;
 
 // Iniciar Servidor

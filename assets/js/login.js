@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Configuración de API - Cambiar localhost por la URL real de tu Backend en DonWeb/Producción
-  const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+  const apiUrl = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1') 
     ? 'http://localhost:5000/api/auth' 
-    : window.location.origin + '/api/auth'; 
+    : '/api/auth'; 
 
 
   // Tabs and Forms

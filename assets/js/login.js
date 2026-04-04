@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const apiUrl = 'http://localhost:5000/api/auth';
+  // Configuración de API - Cambiar localhost por la URL real de tu Backend en DonWeb/Producción
+  const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:5000/api/auth' 
+    : 'https://miriamschild.com.ar/api/auth'; // <--- AJUSTAR ESTO SEGUN TU SUBDOMINIO API REAL
+
 
   // Tabs and Forms
   const clientLoginForm = document.getElementById('clientLoginForm');    
@@ -146,53 +150,18 @@ document.addEventListener('DOMContentLoaded', function() {
   // ==========================================
   // LÓGICA GOOGLE (SEMI-SIMULADO CONTRA EL BACKEND)
   // ==========================================
+  // ==========================================
+  // LÓGICA GOOGLE (PENDIENTE DE CONFIGURACIÓN REAL OAUTH2)
+  // ==========================================
   if(btnsGoogleLogin.length > 0) {
     btnsGoogleLogin.forEach(btn => {
-      btn.addEventListener('click', async function(e) {
+      btn.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        let whatsAppProporcionado = prompt("Google verificó tu Email.\nPara completar el registro, ingresa tu WhatsApp:");
-        
-        if(whatsAppProporcionado && whatsAppProporcionado.trim().length > 5) {
-            alert(`Cargando... te hemos enviado un código a ${whatsAppProporcionado}`);
-            
-            const emailSimulado = `googleuser_${Math.floor(Math.random() * 10000)}@gmail.com`;
-            const fakeData = {
-                name: "Usuario",
-                surname: "Google",
-                email: emailSimulado,
-                whatsapp: whatsAppProporcionado.trim(),
-                password: "LoginPorCuentaGoogle" // En un entorno real, no se usa password si el login fue OAUTH2.0 de Google.
-            };
-
-            try {
-              // Registramos al usuario mágico en la BD
-              const request = await fetch(`${apiUrl}/register`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(fakeData)
-              });
-
-              if(!request.ok) {
-                 const d = await request.json();
-                 alert(d.error || 'Ocurrió un error.');
-                 return;
-              }
-
-              modoLogin = 'google';
-              localStorage.setItem('tempGoogleUser', emailSimulado);
-              
-              document.querySelector('#loginTabContent').style.display = 'none';
-              document.getElementById('loginTab').style.display = 'none';
-              groupCodigoEmail.style.display = 'none';
-              clientVerifyStep.style.display = 'block';
-            } catch (r) {
-              alert('Error conectando backend Google');
-            }
-        }
+        alert('El ingreso con Google requiere una configuración de ClientID (OAuth2.0) en la consola de Google Cloud. Por favor utiliza el formulario de Registro estándar por el momento.');
       });
     });
   }
+
 
   // ==========================================
   // VERIFICACIÓN HACIA EL BACKEND (PASO 2)

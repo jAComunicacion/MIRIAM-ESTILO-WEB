@@ -3,7 +3,7 @@ name: 🚀 Deploy a DonWeb (FTP)
 on:
   push:
     branches:
-      - main
+      - principal
 
 jobs:
   web-deploy:

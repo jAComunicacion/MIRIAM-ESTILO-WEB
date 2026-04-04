@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'clientes.html';
 
       } catch (err) {
-        alert('Error de red al intentar conectarse.');
+        alert('Error de red al intentar conectarse.!!!');
         console.error(err);
       }
     });

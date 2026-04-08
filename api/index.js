@@ -9,29 +9,7 @@ const contactRoutes = require('./routes/contact');
 const app = express();
 
 // Middlewares
-const allowedOrigins = [
-  'https://www.miriamschild.com.ar',
-  'https://miriamschild.com.ar',
-  'http://localhost:5500',
-  'http://127.0.0.1:5500'
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    // permitir peticiones sin origen (como apps móviles o curl)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      // Si quieres ser permisivo durante pruebas, puedes usar callback(null, true)
-      // pero por seguridad limitamos a los dominios conocidos.
-      return callback(null, true); 
-    }
-    return callback(null, true);
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
-
+app.use(cors());
 app.use(express.json()); // Permite recibir JSON en peticiones POST
 app.use(express.urlencoded({ extended: true })); // Permite recibir formularios estándar
 

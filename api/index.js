@@ -14,10 +14,14 @@ app.use(express.json()); // Permite recibir JSON en peticiones POST
 app.use(express.urlencoded({ extended: true })); // Permite recibir formularios estándar
 
 // Definición de Rutas API
+// Las montamos tanto en /api como en la raíz para mayor compatibilidad
 app.use('/api/auth', authRoutes);
-app.use('/api/contact', contactRoutes);
+app.use('/auth', authRoutes); 
 
-app.get('/', (req, res) => {
+app.use('/api/contact', contactRoutes);
+app.use('/contact', contactRoutes);
+
+app.get(['/', '/api'], (req, res) => {
   res.send('API Node.js de Miriam Schild funcionando 🚀');
 });
 

@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Configuración de API usando la URL centralizada
+  if (!window.API_BASE_URL) {
+    console.warn('⚠️ window.API_BASE_URL no está definido. Usando fallback /api');
+  }
   const apiUrl = (window.API_BASE_URL || '/api') + '/auth';
+  console.log('🚀 Login API configurada en:', apiUrl);
 
   // Tabs and Forms
   const clientLoginForm  = document.getElementById('clientLoginForm');

@@ -261,3 +261,107 @@
         width: 100%;
     }
 }
+
+/* ==========================================
+   MODAL DE NOTIFICACIÓN PERSONALIZADO
+   (reemplaza al alert() nativo del navegador)
+   ========================================== */
+#customAlertOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    animation: fadeInOverlay 0.2s ease;
+}
+
+#customAlertOverlay.show {
+    display: flex;
+}
+
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+#customAlertBox {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(81, 45, 168, 0.3);
+    max-width: 420px;
+    width: 90%;
+    overflow: hidden;
+    animation: slideUpAlert 0.25s ease;
+}
+
+@keyframes slideUpAlert {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+#customAlertBox .alert-header {
+    background: linear-gradient(135deg, #5c6bc0, #512da8);
+    padding: 18px 24px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#customAlertBox .alert-header .alert-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+#customAlertBox .alert-header .alert-site {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+#customAlertBox .alert-body {
+    padding: 22px 24px 10px;
+}
+
+#customAlertBox .alert-body p {
+    color: #444;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+#customAlertBox .alert-footer {
+    padding: 14px 24px 22px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#customAlertBox .alert-footer button {
+    background: linear-gradient(135deg, #5c6bc0, #512da8);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 32px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 0;
+}
+
+#customAlertBox .alert-footer button:hover {
+    opacity: 0.88;
+}

@@ -1,100 +1,121 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Configuración de API - Cambiar localhost por la URL real de tu Backend en DonWeb/Producción
-  const apiUrl = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1') 
-    ? 'http://localhost:5000/api/auth' 
-    : '/api/auth'; 
+// ==========================================
+// FUNCIÓN GLOBAL: Modal de alerta personalizado
+// Reemplaza window.alert() con un modal bonito
+// ==========================================
+function showAlert(message, icon) {
+  icon = icon || 'ℹ';
+  const overlay = document.getElementById('customAlertOverlay');
+  const msgEl   = document.getElementById('customAlertMsg');
+  const iconEl  = document.getElementById('customAlertIcon');
+  if (!overlay || !msgEl) { alert(message); return; }
+  iconEl.textContent = icon;
+  msgEl.textContent  = message;
+  overlay.classList.add('show');
+}
 
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Botón ACEPTAR del modal personalizado
+  const btnAlertOk = document.getElementById('btnCustomAlertOk');
+  if (btnAlertOk) {
+    btnAlertOk.addEventListener('click', function() {
+      document.getElementById('customAlertOverlay').classList.remove('show');
+    });
+  }
+
+  // Configuración de API
+  const apiUrl = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')
+    ? 'http://localhost:5000/api/auth'
+    : '/api/auth';
 
   // Tabs and Forms
-  const clientLoginForm = document.getElementById('clientLoginForm');    
-  const formIngresarSolo = document.getElementById('formIngresarSolo');   
+  const clientLoginForm  = document.getElementById('clientLoginForm');
+  const formIngresarSolo = document.getElementById('formIngresarSolo');
   const clientVerifyStep = document.getElementById('clientVerifyStep');
-  
+
   // Botones Registro
   const btnProcesarDatos = document.getElementById('btnProcesarDatos');
-  
+
   // Boton Login
   const btnIngresarSubmit = document.getElementById('btnIngresarSubmit');
 
   // Botones Verificar
   const btnVerificarCodigo = document.getElementById('btnVerificarCodigo');
-  const btnVolverLogin = document.getElementById('btnVolverLogin');
+  const btnVolverLogin     = document.getElementById('btnVolverLogin');
 
   // Botones Google
   const btnsGoogleLogin = document.querySelectorAll('.btnGoogleLogin');
-  
+
   // Datos obligatorios (Registro)
-  const inputName = document.getElementById('clientName');
+  const inputName    = document.getElementById('clientName');
   const inputSurname = document.getElementById('clientSurname');
-  const inputEmail = document.getElementById('clientEmail');
-  const inputWapp = document.getElementById('clientWapp');
-  const inputPass = document.getElementById('clientPass');
-  
+  const inputEmail   = document.getElementById('clientEmail');
+  const inputWapp    = document.getElementById('clientWapp');
+  const inputPass    = document.getElementById('clientPass');
+
   // Datos Ingreso
   const loginUserLog = document.getElementById('loginUserLog');
   const loginPassLog = document.getElementById('loginPassLog');
 
   // Elementos del código (Verificación)
   const inputCodigoEmail = document.getElementById('codigoEmail');
-  const inputCodigoWapp = document.getElementById('codigoWapp');
+  const inputCodigoWapp  = document.getElementById('codigoWapp');
   const groupCodigoEmail = document.getElementById('groupCodigoEmail');
-  
+
   let modoLogin = 'normal'; // 'normal' o 'google'
 
   // ==========================================
   // LÓGICA DE REGISTRO (CONEXIÓN AL BACKEND REAL)
   // ==========================================
-  if(btnProcesarDatos) {
+  if (btnProcesarDatos) {
     btnProcesarDatos.addEventListener('click', async function(e) {
       e.preventDefault();
-      
+
       if (!inputName.value.trim() || !inputSurname.value.trim() || !inputEmail.value.trim() || !inputWapp.value.trim() || !inputPass.value.trim()) {
-        alert('Por favor, completa todos los campos para registrarte.');
-        return;
-      }
-      
-      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailPattern.test(inputEmail.value.trim())) {
-        alert('Por favor introduce un email válido.');
+        showAlert('Por favor, completa todos los campos para registrarte.', '⚠️');
         return;
       }
 
-      // Preparar datos para enviar a Node.js
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(inputEmail.value.trim())) {
+        showAlert('Por favor introduce un email válido.', '✉️');
+        return;
+      }
+
       const data = {
-        name: inputName.value.trim(),
-        surname: inputSurname.value.trim(),
-        email: inputEmail.value.trim(),
-        whatsapp: inputWapp.value.trim(),
-        password: inputPass.value.trim()
+        name:      inputName.value.trim(),
+        surname:   inputSurname.value.trim(),
+        email:     inputEmail.value.trim(),
+        whatsapp:  inputWapp.value.trim(),
+        password:  inputPass.value.trim()
       };
 
       try {
         const btnTextPrev = btnProcesarDatos.textContent;
         btnProcesarDatos.textContent = 'Enviando...';
 
-        // 1. Enviamos los datos al Backend (Mongoose guardará en Base de datos el usuario inactivo)
         const response = await fetch(`${apiUrl}/register`, {
-          method: 'POST',
+          method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body:    JSON.stringify(data)
         });
-        
+
         const result = await response.json();
         btnProcesarDatos.textContent = btnTextPrev;
 
         if (!response.ok) {
-          alert(result.error || 'Ocurrió un error en el registro.');
+          showAlert(result.error || 'Ocurrió un error en el registro.', '❌');
           return;
         }
 
         modoLogin = 'normal';
-        groupCodigoEmail.style.display = 'block'; 
+        groupCodigoEmail.style.display = 'block';
         document.querySelector('#loginTabContent').style.display = 'none';
         document.getElementById('loginTab').style.display = 'none';
         clientVerifyStep.style.display = 'block';
 
       } catch (err) {
-        alert('Error de conexión con el Servidor Backend.');
+        showAlert('Error de conexión con el Servidor Backend.', '🔌');
         console.error(err);
       }
     });
@@ -103,15 +124,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // ==========================================
   // LÓGICA DE INGRESO SIMPLE (BACKEND REAL)
   // ==========================================
-  if(btnIngresarSubmit) {
+  if (btnIngresarSubmit) {
     btnIngresarSubmit.addEventListener('click', async function(e) {
       e.preventDefault();
-      
+
       const user = loginUserLog.value.trim();
       const pass = loginPassLog.value.trim();
 
-      if(!user || !pass) {
-        alert('Por favor, ingresa tu email/WhatsApp y contraseña.');
+      if (!user || !pass) {
+        showAlert('Por favor, ingresa tu email/WhatsApp y contraseña.', '⚠️');
         return;
       }
 
@@ -119,104 +140,95 @@ document.addEventListener('DOMContentLoaded', function() {
         const btnTextPrev = btnIngresarSubmit.textContent;
         btnIngresarSubmit.textContent = 'Comprobando...';
 
-        // Hacemos el pedido POST al login
         const response = await fetch(`${apiUrl}/login`, {
-          method: 'POST',
+          method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ user, pass })
+          body:    JSON.stringify({ user, pass })
         });
-        
+
         const result = await response.json();
         btnIngresarSubmit.textContent = btnTextPrev;
 
         if (!response.ok) {
-           alert(result.error || 'Credenciales inválidas.');
-           return;
+          showAlert(result.error || 'Credenciales inválidas.', '🔒');
+          return;
         }
 
-        // Si fue exitoso, el Backend envía el usuario (sin el password hasheado)
-        // Lo guardamos en localStorage para alimentar el Dashboard clientes.html
         localStorage.setItem('clienteDatosWeb', JSON.stringify(result.user));
-        
         window.location.href = 'clientes.html';
 
       } catch (err) {
-        alert('Error de red al intentar conectarse.!!!');
+        showAlert('Error de red al intentar conectarse.', '🔌');
         console.error(err);
       }
     });
   }
 
   // ==========================================
-  // LÓGICA GOOGLE (SEMI-SIMULADO CONTRA EL BACKEND)
-  // ==========================================
-  // ==========================================
   // LÓGICA GOOGLE (PENDIENTE DE CONFIGURACIÓN REAL OAUTH2)
   // ==========================================
-  if(btnsGoogleLogin.length > 0) {
-    btnsGoogleLogin.forEach(btn => {
+  if (btnsGoogleLogin.length > 0) {
+    btnsGoogleLogin.forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
-        alert('El ingreso con Google requiere una configuración de ClientID (OAuth2.0) en la consola de Google Cloud. Por favor utiliza el formulario de Registro estándar por el momento.');
+        showAlert(
+          'El ingreso con Google requiere una configuración de ClientID (OAuth2.0) en la consola de Google Cloud. Por favor utiliza el formulario de Registro estándar por el momento.',
+          '🔑'
+        );
       });
     });
   }
 
-
   // ==========================================
   // VERIFICACIÓN HACIA EL BACKEND (PASO 2)
   // ==========================================
-  if(btnVerificarCodigo) {
+  if (btnVerificarCodigo) {
     btnVerificarCodigo.addEventListener('click', async function() {
       const codeEmail = inputCodigoEmail.value.trim();
-      const codeWapp = inputCodigoWapp.value.trim();
-      
+      const codeWapp  = inputCodigoWapp.value.trim();
+
       if (modoLogin === 'normal') {
-          if (!codeEmail || !codeWapp) { return alert('Por favor, ingresa ambos códigos.'); }
-          if (codeEmail.length < 3 || codeWapp.length < 3) { return alert('Códigos inválidos.'); }
+        if (!codeEmail || !codeWapp) { showAlert('Por favor, ingresa ambos códigos.', '⚠️'); return; }
+        if (codeEmail.length < 3 || codeWapp.length < 3) { showAlert('Códigos inválidos.', '❌'); return; }
       } else if (modoLogin === 'google') {
-          if (!codeWapp || codeWapp.length < 3) { return alert('Por favor, código de WApp erróneo.'); }
+        if (!codeWapp || codeWapp.length < 3) { showAlert('Por favor, código de WApp erróneo.', '❌'); return; }
       }
 
       try {
         let emailTarget = '';
         if (modoLogin === 'normal') {
-           emailTarget = inputEmail.value.trim();
+          emailTarget = inputEmail.value.trim();
         } else {
-           emailTarget = localStorage.getItem('tempGoogleUser');
+          emailTarget = localStorage.getItem('tempGoogleUser');
         }
 
         btnVerificarCodigo.textContent = 'Verificando y Activando...';
 
-        // API llamamos al backend
         const response = await fetch(`${apiUrl}/verify`, {
-          method: 'POST',
+          method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: emailTarget, codeEmail, codeWapp })
+          body:    JSON.stringify({ email: emailTarget, codeEmail, codeWapp })
         });
-        
+
         const result = await response.json();
-        
-        if(!response.ok) {
-           btnVerificarCodigo.textContent = 'Verificar e Ingresar';
-           alert(result.error || 'Error al verificar.');
-           return;
+
+        if (!response.ok) {
+          btnVerificarCodigo.textContent = 'Verificar e Ingresar';
+          showAlert(result.error || 'Error al verificar.', '❌');
+          return;
         }
 
-        // Si fue existoso la activación, el servidor envía `user` validado
         localStorage.setItem('clienteDatosWeb', JSON.stringify(result.user));
-        
         if (modoLogin === 'google') localStorage.removeItem('tempGoogleUser');
-        
         window.location.href = 'clientes.html';
 
       } catch (e) {
-        alert('Error conectando con la Base de datos - verificación Falló');
+        showAlert('Error conectando con la Base de datos - verificación Falló', '🔌');
       }
     });
   }
-  
-  if(btnVolverLogin) {
+
+  if (btnVolverLogin) {
     btnVolverLogin.addEventListener('click', function() {
       localStorage.removeItem('tempGoogleUser');
       clientVerifyStep.style.display = 'none';

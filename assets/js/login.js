@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Elementos del código (Verificación)
   const inputCodigoEmail = document.getElementById('codigoEmail');
-  const inputCodigoWapp  = document.getElementById('codigoWapp');
   const groupCodigoEmail = document.getElementById('groupCodigoEmail');
 
   let modoLogin = 'normal'; // 'normal' o 'google'
@@ -187,13 +186,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (btnVerificarCodigo) {
     btnVerificarCodigo.addEventListener('click', async function() {
       const codeEmail = inputCodigoEmail.value.trim();
-      const codeWapp  = inputCodigoWapp.value.trim();
 
       if (modoLogin === 'normal') {
-        if (!codeEmail || !codeWapp) { showAlert('Por favor, ingresa ambos códigos.', '⚠️'); return; }
-        if (codeEmail.length < 3 || codeWapp.length < 3) { showAlert('Códigos inválidos.', '❌'); return; }
+        if (!codeEmail) { showAlert('Por favor, ingresa el código.', '⚠️'); return; }
+        if (codeEmail.length < 3) { showAlert('Código inválido.', '❌'); return; }
       } else if (modoLogin === 'google') {
-        if (!codeWapp || codeWapp.length < 3) { showAlert('Por favor, código de WApp erróneo.', '❌'); return; }
+        // En google podrías pedir algo extra o nada
       }
 
       try {
@@ -209,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const response = await fetch(`${apiUrl}/verify`, {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ email: emailTarget, codeEmail, codeWapp })
+          body:    JSON.stringify({ email: emailTarget, codeEmail })
         });
 
         const result = await response.json();

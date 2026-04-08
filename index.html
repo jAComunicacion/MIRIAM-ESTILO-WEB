@@ -34,6 +34,8 @@
   <!-- Archivos MIRIAM CSS -->
   <link href="assets/miriam/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/miriam/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
   <link href="assets/miriam/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/miriam/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/miriam/venobox/venobox.css" rel="stylesheet">
@@ -41,6 +43,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/form.css" rel="stylesheet">
+
 
 </head>
 
@@ -482,93 +486,91 @@
 
   </main><!-- Fin del MAIN -->
 
-  <!-- Modal de Ingreso para Clientes -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" style="font-family: 'Montserrat', sans-serif;">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content" style="background-color: rgba(41, 87, 164, 0.9); border: 2px solid var(--blanco); border-radius: 10px; color: var(--blanco);">
-        <div class="modal-header" style="border-bottom: 1px solid rgba(255,255,255,0.2);">
-          <h5 class="modal-title font-weight-bold" id="loginModalLabel" style="color: var(--blanco); font-size: 20px; text-transform: uppercase;">
-             Ingreso / Registro
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" style="background:none; border:none; font-size:24px; color:var(--blanco); opacity: 0.8;">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body p-4">
-          <!-- TABS -->
-          <ul class="nav nav-pills nav-fill mb-4" id="loginTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="tab-ingresar" data-toggle="pill" data-bs-toggle="pill" href="#auth-ingresar" role="tab" style="color: var(--blanco); font-weight: bold;">Ingresar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="tab-registrar" data-toggle="pill" data-bs-toggle="pill" href="#auth-registrar" role="tab" style="color: var(--light); font-weight: bold;">Registrarse</a>
-            </li>
-          </ul>
+  <!-- Modal de Ingreso para Clientes (NUEVO) -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content" style="background: transparent; border: none;">
+        <div class="modal-body p-0">
+          <div class="auth-modal-container" id="auth-modal-container">
+            <!-- Close button for the modal -->
+            <button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: 20px; top: 15px; z-index: 1001; background: none; border: none; font-size: 24px; color: #333; opacity: 0.5;">
+              <span aria-hidden="true">&times;</span>
+            </button>
 
-          <div class="tab-content" id="loginTabContent">
-            
-            <!-- TIPO: INGRESAR -->
-            <div class="tab-pane fade show active" id="auth-ingresar" role="tabpanel">
-              <button type="button" class="btn w-100 mb-3 btnGoogleLogin" style="background: var(--blanco); color: var(--dark); font-weight:bold; border-radius:50px; padding:10px;">
-                <i class="fa fa-google" style="color: #DB4437; margin-right: 8px;"></i> Ingresar con Google
-              </button>
-              <div style="color:rgba(255,255,255,0.7); text-align:center; font-size:13px; margin-bottom:15px;">O usa tus datos de acceso:</div>
-              <form id="formIngresarSolo">
-                <div class="form-group mb-3">
-                  <input type="text" class="form-control" id="loginUserLog" placeholder="Email o WhatsApp" required style="background-color: var(--blanco); color: var(--dark); border:none;">
-                </div>
-                <div class="form-group mb-4">
-                  <input type="password" class="form-control" id="loginPassLog" placeholder="Contraseña" required style="background-color: var(--blanco); color: var(--dark); border:none;">
-                </div>
-                <button type="button" id="btnIngresarSubmit" class="btn w-100" style="background: var(--turquesa); color: var(--blanco); border:none; border-radius: 50px; padding: 10px; font-weight: 500; text-transform: uppercase;">Entrar al Dashboard</button>
-              </form>
-            </div>
-
-            <!-- TIPO: REGISTRARSE -->
-            <div class="tab-pane fade" id="auth-registrar" role="tabpanel">
-              <button type="button" class="btn w-100 mb-3 btnGoogleLogin" style="background: var(--blanco); color: var(--dark); font-weight:bold; border-radius:50px; padding:10px;">
-                <i class="fa fa-google" style="color: #DB4437; margin-right: 8px;"></i> Registrarse con Google
-              </button>
-              <div style="color:rgba(255,255,255,0.7); text-align:center; font-size:13px; margin-bottom:15px;">O completa el formulario web:</div>
-              <!-- Paso 1: Datos Personales -->
+            <!-- Sign Up Form -->
+            <div class="form-container sign-up">
               <form id="clientLoginForm">
-                <div class="form-group mb-3">
-                  <input type="text" class="form-control" id="clientName" placeholder="Nombre Real (Actualizado) *" required style="background-color: var(--blanco); color: var(--dark); border:none;">
+                <h1 style="color: #333;">Registrarse</h1>
+                <div class="social-icons">
+                  <a href="#" class="icon btnGoogleLogin"><i class="fa-brands fa-google"></i></a>
+                  <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
-                <div class="form-group mb-3">
-                  <input type="text" class="form-control" id="clientSurname" placeholder="Apellido *" required style="background-color: var(--blanco); color: var(--dark); border:none;">
-                </div>
-                <div class="form-group mb-3">
-                  <input type="email" class="form-control" id="clientEmail" placeholder="Correo Electrónico *" required style="background-color: var(--blanco); color: var(--dark); border:none;">
-                </div>
-                <div class="form-group mb-3">
-                  <input type="text" class="form-control" id="clientWapp" placeholder="WhatsApp (ej: +549...) *" required style="background-color: var(--blanco); color: var(--dark); border:none;">
-                </div>
-                <div class="form-group mb-4">
-                  <input type="password" class="form-control" id="clientPass" placeholder="Contraseña *" required style="background-color: var(--blanco); color: var(--dark); border:none;">
-                </div>
-                <button type="button" id="btnProcesarDatos" class="btn w-100" style="background: var(--turquesa); color: var(--blanco); border:none; border-radius: 50px; padding: 10px; font-weight: 500; text-transform: uppercase;">Continuar Registro</button>
+                <span>o usa tu email para registrarte</span>
+                <input type="text" id="clientName" placeholder="Nombre" required>
+                <input type="text" id="clientSurname" placeholder="Apellido" required>
+                <input type="email" id="clientEmail" placeholder="Email" required>
+                <input type="text" id="clientWapp" placeholder="WhatsApp (ej: +549...)" required>
+                <input type="password" id="clientPass" placeholder="Contraseña" required>
+                <button type="button" id="btnProcesarDatos">Registrar</button>
               </form>
             </div>
-          </div>
 
-          <!-- Paso 2: Verificación de Código -->
-          <div id="clientVerifyStep" style="display:none; padding-top: 10px;">
-            <p class="mb-4 text-center" style="color: var(--blanco); font-size: 14px;">Hemos enviado un código para verificar.</p>
-            <div class="form-group mb-3" id="groupCodigoEmail">
-              <input type="text" class="form-control" id="codigoEmail" placeholder="Código de Email *" required style="background-color: var(--blanco); color: var(--dark); border:none;">
+            <!-- Sign In Form -->
+            <div class="form-container sign-in">
+              <form id="formIngresarSolo">
+                <h1 style="color: #333;">Ingresar</h1>
+                <div class="social-icons">
+                  <a href="#" class="icon btnGoogleLogin"><i class="fa-brands fa-google"></i></a>
+                  <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <span>Usar tu email para entrar</span>
+                <input type="text" id="loginUserLog" placeholder="Email o WhatsApp" required>
+                <input type="password" id="loginPassLog" placeholder="Contraseña" required>
+                <a href="#">¿Olvidaste la clave?</a>
+                <button type="button" id="btnIngresarSubmit">INGRESAR</button>
+              </form>
             </div>
-            <div class="form-group mb-4" id="groupCodigoWapp">
-              <input type="text" class="form-control" id="codigoWapp" placeholder="Código de WhatsApp *" required style="background-color: var(--blanco); color: var(--dark); border:none;">
+
+            <!-- Paso 2: Verificación de Código (para compatibilidad con login.js) -->
+            <div id="clientVerifyStep" style="display:none; position: absolute; top:0; left:0; width:100%; height:100%; background: white; z-index: 1002; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center;">
+              <h2 style="color: #333; margin-bottom: 20px;">Verificación</h2>
+              <p style="color: #666;">Hemos enviado un código para verificar.</p>
+              <div class="w-100 mb-3" id="groupCodigoEmail">
+                <input type="text" id="codigoEmail" placeholder="Código de Email *" required style="background-color: #eee; border:none; padding: 10px 15px; border-radius: 8px; width: 100%;">
+              </div>
+              <div class="w-100 mb-4" id="groupCodigoWapp">
+                <input type="text" id="codigoWapp" placeholder="Código de WhatsApp *" required style="background-color: #eee; border:none; padding: 10px 15px; border-radius: 8px; width: 100%;">
+              </div>
+              <button type="button" id="btnVerificarCodigo" style="background-color: #512da8; color: #fff; padding: 10px 45px; border-radius: 8px; border:none; cursor:pointer; text-transform: uppercase; font-weight: 600;">Verificar e Ingresar</button>
+              <button type="button" id="btnVolverLogin" style="background: none; border: none; color: #333; margin-top: 15px; cursor: pointer;">Volver</button>
             </div>
-            <button type="button" id="btnVerificarCodigo" class="btn w-100" style="background: var(--turquesa); color: var(--blanco); border:none; border-radius: 50px; padding: 10px; font-weight: 500; text-transform: uppercase;">Verificar e Ingresar</button>
-            <button type="button" id="btnVolverLogin" class="btn btn-link w-100 mt-2" style="color: var(--light); font-size: 14px;">Volver</button>
+
+            <!-- Empty elements for login.js compatibility -->
+            <div id="loginTab" style="display:none;"></div>
+            <div id="loginTabContent" style="display:none;"></div>
+
+            <!-- Toggle Panels -->
+            <div class="toggle-container">
+              <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                  <h1>¡Bienvenido!</h1>
+                  <p>Ingresa tus datos personales para utilizar todas las funciones del sitio.</p>
+                  <button class="hidden" id="login">Ingresar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                  <h1>¡Hola Amigo!</h1>
+                  <p>Regístrate con tus datos personales para utilizar todas las funciones del sitio</p>
+                  <button class="hidden" id="register">Registrarse</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>      </div>
         </div>
       </div>
     </div>
   </div>
+
 
   <!-- ======= PIE DE PAGINA ======= -->
   <footer id="footer">
@@ -607,6 +609,8 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/login.js"></script>
+  <script src="assets/js/form.js"></script>
+
 
 </body>
 

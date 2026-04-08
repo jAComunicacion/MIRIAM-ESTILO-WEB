@@ -1,3 +1,4 @@
+// Force Redeploy: Updated environment variables activation
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');

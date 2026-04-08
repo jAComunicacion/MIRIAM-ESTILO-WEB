@@ -589,9 +589,20 @@
   <script src="assets/miriam/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="assets/js/api-config.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/login.js"></script>
   <script src="assets/js/form.js"></script>
+
+  <script>
+    // Configurar el action del formulario de contacto dinámicamente
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.querySelector('.php-email-form');
+      if (contactForm) {
+        contactForm.setAttribute('action', window.API_BASE_URL + '/contact');
+      }
+    });
+  </script>
 
   <!-- ======= Modal de Notificación Personalizado (reemplaza alert()) ======= -->
   <div id="customAlertOverlay" role="alertdialog" aria-modal="true" aria-labelledby="customAlertMsg">

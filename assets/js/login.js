@@ -23,10 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Configuración de API
-  const apiUrl = window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')
-    ? 'http://localhost:5000/api/auth'
-    : '/api/auth';
+  // Configuración de API usando la URL centralizada
+  const apiUrl = (window.API_BASE_URL || '/api') + '/auth';
 
   // Tabs and Forms
   const clientLoginForm  = document.getElementById('clientLoginForm');

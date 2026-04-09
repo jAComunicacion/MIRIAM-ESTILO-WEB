@@ -94,16 +94,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const endpoint = window.API_ENDPOINTS ? window.API_ENDPOINTS.register : '/registro.php';
         const response = await fetch(endpoint, {
           method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify(data)
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body:    new URLSearchParams(data)
         });
 
         const result = await response.json();
         btnProcesarDatos.textContent = btnTextPrev;
 
-        if (!response.ok) {
+        if (!response.ok || result.error) {
           showAlert(result.error || 'Ocurrió un error en el registro.', '❌');
           return;
+        }
+
+        if (result.message) {
+          showAlert(result.message, '✅');
         }
 
         modoLogin = 'normal';
@@ -141,14 +145,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const endpoint = window.API_ENDPOINTS ? window.API_ENDPOINTS.login : '/login.php';
         const response = await fetch(endpoint, {
           method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ user, pass })
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body:    new URLSearchParams({ user, pass })
         });
 
         const result = await response.json();
         btnIngresarSubmit.textContent = btnTextPrev;
 
-        if (!response.ok) {
+        if (!response.ok || result.error) {
           showAlert(result.error || 'Credenciales inválidas.', '🔒');
           return;
         }
@@ -205,13 +209,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const endpoint = window.API_ENDPOINTS ? window.API_ENDPOINTS.verify : '/verificar.php';
         const response = await fetch(endpoint, {
           method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ email: emailTarget, codeEmail })
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body:    new URLSearchParams({ email: emailTarget, codeEmail })
         });
 
         const result = await response.json();
 
-        if (!response.ok) {
+        if (!response.ok || result.error) {
           btnVerificarCodigo.textContent = 'Verificar e Ingresar';
           showAlert(result.error || 'Error al verificar.', '❌');
           return;

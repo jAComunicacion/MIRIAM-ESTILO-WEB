@@ -24,11 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Configuración de API usando la URL centralizada
-  if (!window.API_BASE_URL) {
-    console.warn('⚠️ window.API_BASE_URL no está definido. Usando fallback /api');
-  }
-  const apiUrl = (window.API_BASE_URL || '/api') + '/auth';
-  console.log('🚀 Login API configurada en:', apiUrl);
+  console.log('🚀 Login API configurada localmente');
 
   // Tabs and Forms
   const clientLoginForm  = document.getElementById('clientLoginForm');
@@ -95,7 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const btnTextPrev = btnProcesarDatos.textContent;
         btnProcesarDatos.textContent = 'Enviando...';
 
-        const response = await fetch(`${apiUrl}/register`, {
+        const endpoint = window.API_ENDPOINTS ? window.API_ENDPOINTS.register : '/registro.php';
+        const response = await fetch(endpoint, {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify(data)
@@ -141,7 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const btnTextPrev = btnIngresarSubmit.textContent;
         btnIngresarSubmit.textContent = 'Comprobando...';
 
-        const response = await fetch(`${apiUrl}/login`, {
+        const endpoint = window.API_ENDPOINTS ? window.API_ENDPOINTS.login : '/login.php';
+        const response = await fetch(endpoint, {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify({ user, pass })
@@ -204,7 +202,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         btnVerificarCodigo.textContent = 'Verificando y Activando...';
 
-        const response = await fetch(`${apiUrl}/verify`, {
+        const endpoint = window.API_ENDPOINTS ? window.API_ENDPOINTS.verify : '/verificar.php';
+        const response = await fetch(endpoint, {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify({ email: emailTarget, codeEmail })

@@ -162,6 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   background: url(../img/hero-bg.jpg) top center no-repeat;
   background-size: cover;
   position: relative;
@@ -172,11 +173,10 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0;
   left: 0;
-  min-width: 100%;
-  min-height: 100%;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   z-index: 1;
 }
 

@@ -1,0 +1,214 @@
+ /* Estilos personalizados para los botones grandes tipo tarjeta */
+ .btn-dashboard {
+     background-color: var(--blanco);
+     border: 3px solid transparent;
+     border-radius: 10px;
+     padding: 30px 20px;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     cursor: pointer;
+     transition: all 0.4s ease;
+     text-decoration: none;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+     position: relative;
+     overflow: hidden;
+ }
+
+ /* Pseudo-elemento para el fondo de imagen suave al 15% */
+ .btn-dashboard::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-size: cover;
+     background-position: center;
+     opacity: 0.15;
+     transition: all 0.4s ease;
+     z-index: 0;
+ }
+
+ /* Desaparece la imagen en hover */
+ .btn-dashboard:hover::before {
+     opacity: 0;
+ }
+
+ /* Asignar imagenes a cada tarjeta */
+ #btnDash1::before {
+     background-image: url('assets/img/team-1.jpg');
+ }
+
+ #btnDash2::before {
+     background-image: url('assets/img/team-2.jpg');
+ }
+
+ #btnDash3::before {
+     background-image: url('assets/img/team-3.jpg');
+ }
+
+ #btnDash4::before {
+     background-image: url('assets/img/team-4.jpg');
+ }
+
+ /* Elevar el contenido sobre el fondo */
+ .btn-dashboard>* {
+     position: relative;
+     z-index: 1;
+ }
+
+ /* Interacción Hover: Se vuelve azul con bordes marcados y sombra alta */
+ .btn-dashboard:hover {
+     background-color: var(--primary);
+     border: 3px solid #1c3b6e;
+     /* Un azul apenas un poco mas oscuro como borde */
+     transform: translateY(-8px);
+     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+     text-decoration: none;
+ }
+
+ .btn-dashboard:hover * {
+     color: var(--blanco) !important;
+ }
+
+ .btn-dashboard h4 {
+     font-size: 18px;
+     font-weight: 700;
+     color: var(--primary);
+     margin-bottom: 20px;
+     text-transform: uppercase;
+     transition: all 0.4s ease;
+ }
+
+ /* Interlineado reducido a la mitad para los datos */
+ .datos-cliente p {
+     line-height: 1.2;
+     margin-bottom: 8px;
+     color: var(--gris);
+     transition: all 0.4s ease;
+     font-size: 14px;
+ }
+
+ .transition-p {
+     line-height: 1.2;
+     transition: all 0.4s ease;
+     color: var(--gris);
+     font-size: 13px;
+     margin: 0;
+ }
+
+ /* Efecto del avatar circular */
+ .circle-avatar:hover {
+     border-color: var(--secondary) !important;
+     transform: scale(1.05);
+ }
+
+/* =========================================
+   ESTILOS DE CLIENTES.HTML EXTERNALIZADOS
+   ========================================= */
+
+/* Header Dashboard */
+.header-dashboard {
+    background: rgba(52, 59, 64, 0.9);
+}
+.header-dashboard .dashboard-header-container {
+    height: 100%;
+}
+.dashboard-logo-img {
+    max-height: 40px;
+}
+.nav-menu-dashboard {
+    margin-top: 10px;
+}
+.btn-cerrar-sesion {
+    color: var(--blanco);
+    border-bottom: 2px solid var(--secondary);
+}
+
+/* Dashboard Section */
+.dashboard-section {
+    background: var(--turquesa);
+    padding-top: 150px;
+    padding-bottom: 120px;
+    min-height: 100vh;
+}
+.dashboard-section-title {
+    color: var(--blanco);
+}
+.dashboard-section-description {
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+}
+
+/* Avatar y Datos Personales (Dashboard Botón 1) */
+.avatar-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+.dashboard-circle-avatar {
+    width: 70px;
+    height: 70px;
+    background-color: var(--light);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.avatar-icon {
+    color: var(--primary);
+    font-size: 24px;
+}
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+.avatar-input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Textos de Datos */
+.lbl-nombre-apellido {
+    font-size: 16px;
+}
+.lbl-email {
+    font-size: 12px;
+    word-break: break-all;
+}
+.wapp-container {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.wapp-icon {
+    color: #3f25d3;
+    font-size: 22px;
+}
+.lbl-wapp {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Footer Dashboard */
+.footer-dashboard .footer-container {
+    padding: 20px 0;
+}
+.footer-dashboard .footer-copyright {
+    color: var(--blanco);
+}

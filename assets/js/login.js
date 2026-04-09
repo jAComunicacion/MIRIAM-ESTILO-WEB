@@ -41,8 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnVerificarCodigo = document.getElementById('btnVerificarCodigo');
   const btnVolverLogin     = document.getElementById('btnVolverLogin');
 
-  // Botones Google
+  // Botones Redes Sociales
   const btnsGoogleLogin = document.querySelectorAll('.btnGoogleLogin');
+  const btnsFacebookLogin = document.querySelectorAll('.btnFacebookLogin');
+  const btnsInstagramLogin = document.querySelectorAll('.btnInstagramLogin');
+  const btnOlvidasteClave = document.getElementById('btnOlvidasteClave');
 
   // Datos obligatorios (Registro)
   const inputName    = document.getElementById('clientName');
@@ -179,6 +182,53 @@ document.addEventListener('DOMContentLoaded', function() {
           '🔑'
         );
       });
+    });
+  }
+
+  // ==========================================
+  // LÓGICA FACEBOOK & INSTAGRAM (PENDIENTE OAUTH)
+  // ==========================================
+  if (btnsFacebookLogin.length > 0) {
+    btnsFacebookLogin.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showAlert(
+          'El ingreso con Facebook requiere configuración de App ID en Facebook para Desarrolladores. Por favor utiliza el formulario de Registro estándar por el momento.',
+          '🔑'
+        );
+      });
+    });
+  }
+
+  if (btnsInstagramLogin.length > 0) {
+    btnsInstagramLogin.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showAlert(
+          'El ingreso con Instagram requiere configuración de un cliente OAuth. Por favor utiliza el formulario de Registro estándar por el momento.',
+          '🔑'
+        );
+      });
+    });
+  }
+
+  // ==========================================
+  // LÓGICA OLVIDASTE CONTRASEÑA
+  // ==========================================
+  if (btnOlvidasteClave) {
+    btnOlvidasteClave.addEventListener('click', function(e) {
+      e.preventDefault();
+      const user = loginUserLog.value.trim();
+      if (!user) {
+        showAlert('Por favor, ingresa tu email en el campo de texto de acceso para poder enviarte el enlace de recuperación.', '⚠️');
+      } else {
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (emailPattern.test(user)) {
+             showAlert(`Hemos enviado instrucciones para restablecer tu contraseña a: ${user}. Por favor, revisa tu bandeja de entrada.`, '✉️');
+        } else {
+             showAlert('Por favor, ingresa un correo electrónico válido para recuperar la contraseña.', '✉️');
+        }
+      }
     });
   }
 

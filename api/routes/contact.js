@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
 
     await transporter.sendMail({
       from: `"Contacto Web - Miriam Schild" <${process.env.EMAIL_USER}>`,
-      to: 'julio38arg@gmail.com', // El destino original de contact.php
+      to: 'info@miriamschild.com.ar', // El destino original de contact.php
       replyTo: email,
       subject: `Nuevo mensaje: ${subject || 'Sin Asunto'}`,
       text: `Nombre: ${name}\nEmail: ${email}\nAsunto: ${subject}\n\nMensaje:\n${message}`,

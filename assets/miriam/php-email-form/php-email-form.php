@@ -1,4 +1,4 @@
- <?php // Configuración del destinatario $to = 'julio38arg@gmail.com'; 
+ <?php // Configuración del destinatario $to = 'info@miriamschild.com.ar';
  // Cambia esto por tu dirección de correo $subject_base = 'Nuevo mensaje del formulario de contacto'; 
   if ($_SERVER["REQUEST_METHOD"] == "POST") { 
      if ($_SERVER["REQUEST_METHOD"] == "POST") { // Sanitiza y valida los datos $name = strip_tags(trim($_POST["name"] ?? '')); $email = filter_var(trim($_POST["email"] ?? ''),

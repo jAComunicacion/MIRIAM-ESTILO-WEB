@@ -4,7 +4,7 @@
 $('form.php-email-form').submit(function(e) {
 e.preventDefault();
 
-var f = (this).find('.form-group'), ferror = false, emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}/i;
+var f = $(this).find('.form-group'), ferror = false, emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}/i;
 
 // Validación de inputs
 f.children('input').each(function() {
@@ -74,9 +74,8 @@ if (ierror) ferror = true;
 
 if (ferror) return false;
 
-var this_form = 
-(this);
-var action=(this);varaction=(this).attr('action');
+var this_form = $(this);
+var action = $(this).attr('action');
 if (!action) {
 this_form.find('.loading').hide();
 this_form.find('.error-message').show().html('The form action property is not set!');

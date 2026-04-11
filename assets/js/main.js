@@ -7,9 +7,14 @@
     if ($(this).scrollTop() > 100) {
       $('.back-to-top').fadeIn('slow');
       $('#header').addClass('header-fixed');
+      $('#mobile-nav-toggle').fadeOut('slow');
+      $('#sticky-hamburger').css('display', 'flex').fadeIn('slow');
     } else {
       $('.back-to-top').fadeOut('slow');
       $('#header').removeClass('header-fixed');
+      $('#mobile-nav-toggle').fadeIn('slow');
+      $('#sticky-hamburger').fadeOut('slow');
+      $('#sticky-sidebar').removeClass('active');
     }
   });
 
@@ -180,4 +185,22 @@
     time: 1000
   });
 
-})(jQuery);
+  // Sticky Hamburger and Sidebar Logic
+  $('#sticky-hamburger').on('click', function() {
+    $('#sticky-sidebar').addClass('active');
+  });
+
+  $('.sidebar-close, .sidebar-nav a').on('click', function() {
+    $('#sticky-sidebar').removeClass('active');
+  });
+
+  // Close sidebar on click outside
+  $(document).on('click', function(e) {
+    var sidebar = $('#sticky-sidebar');
+    var hamburger = $('#sticky-hamburger');
+    if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0 && !hamburger.is(e.target) && hamburger.has(e.target).length === 0) {
+      sidebar.removeClass('active');
+    }
+  });
+
+})(jQuery);

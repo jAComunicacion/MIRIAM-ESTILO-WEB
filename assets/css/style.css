@@ -150,9 +150,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-fixed {
-  background: rgba(52, 59, 64, 0.9);
-  padding: 20px 0;
-  height: 72px;
+  top: -120px; /* Hide the navbar by moving it up */
   transition: all 0.5s;
 }
 
@@ -1276,5 +1274,130 @@ section {
   }
 }
 
+/*--------------------------------------------------------------
+# Sticky Hamburger & Sidebar Menu
+--------------------------------------------------------------*/
+.sticky-hamburger {
+  position: fixed;
+  top: 60px;
+  right: 60px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary);
+  color: var(--blanco);
+  font-size: 30px;
+  border: none;
+  border-radius: 50%;
+  display: none; /* Controlled via JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
 
+.sticky-hamburger:hover {
+  background-color: var(--turquesa);
+  transform: scale(1.1);
+}
 
+.sticky-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Initially off-screen */
+  width: 350px;
+  height: 100%;
+  background-color: var(--primary);
+  z-index: 2000;
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.sticky-sidebar.active {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: var(--blanco);
+  font-size: 40px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.sidebar-close:hover {
+  color: var(--turquesa);
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 25px;
+}
+
+.sidebar-nav li a {
+  color: var(--blanco);
+  font-size: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  display: inline-block;
+  position: relative;
+}
+
+.sidebar-nav li a:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--turquesa);
+  transition: width 0.3s ease;
+}
+
+.sidebar-nav li a:hover {
+  color: var(--turquesa);
+  padding-left: 10px;
+}
+
+.sidebar-nav li a:hover:after {
+  width: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sticky-hamburger {
+    top: 60px;
+    right: 60px;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+  
+  .sticky-sidebar {
+    width: 80%;
+    right: -80%;
+  }
+
+  .sidebar-nav li a {
+    font-size: 30px;
+  }
+}

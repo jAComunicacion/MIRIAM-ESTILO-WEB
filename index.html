@@ -66,7 +66,7 @@
           <li><a href="#about">Inicio</a></li>
           <li><a href="#portfolio">Productos</a></li>
           <li><a href="#services">Colecciones</a></li>
-          <li><a href="#team">Quienes Somos</a></li>
+          <!-- <li><a href="#team">Quienes Somos</a></li>-->
           <li><a href="#contact">Conversamos</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -400,7 +400,8 @@
           <!-- FORMULARIO DE CONTACTO -->
           <div class="col-lg-5 col-md-8">
             <div class="form">
-              <form action="/api/contact" method="post" role="form" class="php-email-form">
+              <form action="assets/miriam/php-email-form/php-email-form.php" method="post" role="form"
+                class="php-email-form">
 
                 <div class="form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Tu nombre"
@@ -563,6 +564,25 @@
     </div>
   </footer><!-- FIN PIE DE PAGINA -->
 
+  <!-- Sticky Hamburger Menu -->
+  <button type="button" id="sticky-hamburger" class="sticky-hamburger">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <!-- Sidebar Menu -->
+  <div id="sticky-sidebar" class="sticky-sidebar">
+    <div class="sidebar-header">
+      <button type="button" class="sidebar-close">&times;</button>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#about">Inicio</a></li>
+      <li><a href="#portfolio">Productos</a></li>
+      <li><a href="#services">Colecciones</a></li>
+      <li><a href="#contact">Conversamos</a></li>
+    </ul>
+  </div>
+
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- Miriam JS Files -->
@@ -585,15 +605,7 @@
   <script src="assets/js/login.js"></script>
   <script src="assets/js/form.js"></script>
 
-  <script>
-    // Configurar el action del formulario de contacto dinámicamente
-    document.addEventListener('DOMContentLoaded', function () {
-      const contactForm = document.querySelector('.php-email-form');
-      if (contactForm) {
-        contactForm.setAttribute('action', window.API_BASE_URL + '/contact');
-      }
-    });
-  </script>
+
 
   <!-- ======= Modal de Notificación Personalizado (reemplaza alert()) ======= -->
   <div id="customAlertOverlay" role="alertdialog" aria-modal="true" aria-labelledby="customAlertMsg">

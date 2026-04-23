@@ -2,27 +2,16 @@
 !(function($) {
   "use strict";
 
-  // Header fixed and Back to top button
+  // Header fixed y Botonera Flotante
   $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
+    if ($(this).scrollTop() > 80) {
+      $('#floatingButtonBar').addClass('is-visible');
       $('#header').addClass('header-fixed');
-      $('#mobile-nav-toggle').fadeOut('slow');
-      $('#sticky-hamburger').css('display', 'flex').fadeIn('slow');
     } else {
-      $('.back-to-top').fadeOut('slow');
+      $('#floatingButtonBar').removeClass('is-visible');
       $('#header').removeClass('header-fixed');
-      $('#mobile-nav-toggle').fadeIn('slow');
-      $('#sticky-hamburger').fadeOut('slow');
       $('#sticky-sidebar').removeClass('active');
     }
-  });
-
-  $('.back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
   });
 
   // Initiate superfish on nav menu
@@ -185,11 +174,7 @@
     time: 1000
   });
 
-  // Sticky Hamburger and Sidebar Logic
-  $('#sticky-hamburger').on('click', function() {
-    $('#sticky-sidebar').addClass('active');
-  });
-
+  // Sidebar close logic
   $('.sidebar-close, .sidebar-nav a').on('click', function() {
     $('#sticky-sidebar').removeClass('active');
   });
@@ -197,10 +182,32 @@
   // Close sidebar on click outside
   $(document).on('click', function(e) {
     var sidebar = $('#sticky-sidebar');
-    var hamburger = $('#sticky-hamburger');
-    if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0 && !hamburger.is(e.target) && hamburger.has(e.target).length === 0) {
+    var menuBtn = $('#btnMenuFloating');
+    if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0 &&
+        !menuBtn.is(e.target) && menuBtn.has(e.target).length === 0) {
       sidebar.removeClass('active');
     }
+  });
+
+  // Botonera Flotante Lateral Derecha
+  $('#btnMenuFloating').on('click', function(e) {
+    e.stopPropagation();
+    $('#sticky-sidebar').toggleClass('active');
+  });
+
+  $('#btnWhatsappFloating').on('click', function() {
+    window.open('https://wa.me/5493442471470?text=Hola%20quiero%20más%20información', '_blank', 'noopener,noreferrer');
+  });
+
+  $('#btnLoginFloating').on('click', function() {
+    var loginModal = document.getElementById('loginModal');
+    if (loginModal) {
+      bootstrap.Modal.getOrCreateInstance(loginModal).show();
+    }
+  });
+
+  $('#btnTopFloating').on('click', function() {
+    $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
   });
 
 })(jQuery);

@@ -45,10 +45,25 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/form.css" rel="stylesheet">
 
-
 </head>
 
 <body>
+
+  <!-- Botonera Flotante Lateral Derecha -->
+  <div class="floating-button-bar" id="floatingButtonBar">
+    <button class="floating-btn btn-menu" id="btnMenuFloating" aria-label="Menú">
+      <i class="bx bx-menu"></i>
+    </button>
+    <button class="floating-btn btn-whatsapp" id="btnWhatsappFloating" aria-label="WhatsApp">
+      <i class="bx bxl-whatsapp"></i>
+    </button>
+    <button class="floating-btn btn-login" id="btnLoginFloating" aria-label="Ingresar">
+      <i class="bx bxs-lock"></i>
+    </button>
+    <button class="floating-btn btn-top" id="btnTopFloating" aria-label="Ir arriba">
+      <i class="bx bx-chevron-up"></i>
+    </button>
+  </div>
 
   <!-- ======= Encabezado ======= -->
   <header id="header" class="header-transparent">
@@ -62,12 +77,9 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="index.html">Home</a></li>
-          <li><a href="#about">Inicio</a></li>
           <li><a href="#portfolio">Productos</a></li>
           <li><a href="#services">Colecciones</a></li>
-          <!-- <li><a href="#team">Quienes Somos</a></li>-->
-          <li><a href="#contact">Conversamos</a></li>
+          <li class="btn-ingresar"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-toggle="modal" data-target="#loginModal">INGRESAR</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -82,22 +94,11 @@
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
       <h1>Bienvenidos</h1>
       <h2>a nuestro mundo de salud y bienestar personal</h2>
-      <div>
-        <a href="#" class="btn-get-started" data-toggle="modal" data-target="#loginModal" data-bs-toggle="modal"
-          data-bs-target="#loginModal">Ingresar</a>
-        <a href="#about" class="btn-get-started">Leer más</a>
-      </div>
     </div>
   </section><!-- FIN SECCION Hero -->
 
   <main id="main">
 
-    <!-- Botón FIJO de WhatsApp -->
-    <a href="https://wa.me/5493442471470?text=Hola%20quiero%20más%20información" class="whatsapp-button" target="_blank"
-      rel="noopener noreferrer">
-      <i class="fa-brands fa-whatsapp"></i>
-
-    </a>
 
 
 
@@ -277,28 +278,31 @@
           <p class="section-description">Cuidado, disfrute y conexión.</p>
         </div>
         <div class="row">
+
           <div class="col-lg-4 col-md-6" data-aos="zoom-in">
             <div class="box">
               <div class="icon"><a href=""><i class="favicon"></i></a></div>
               <h4 class="title"><a href="">Desierto Sereno</a></h4>
-              <p class="description">Elegancia natural y envolvente del desierto que se vuelve serena y ligera con notas
-                de frutos rojos y madera.</p>
+              <p class="description">Elegancia natural y envolvente del desierto que se vuelve serena y
+                ligera con notas de frutos rojos y madera.</p>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6" data-aos="zoom-in">
             <div class="box">
               <div class="icon"><a href=""><i class="favicon"></i></a></div>
               <h4 class="title"><a href="">Brisa Interior</a></h4>
-              <p class="description">El verde fresco y suave del tilo combinado con la chispa citrica del limon refresca
-                los ambientes con calma.</p>
+              <p class="description">El verde fresco y suave del tilo combinado con
+                la chispa citrica del limon refresca los ambientes con calma.</p>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6" data-aos="zoom-in">
             <div class="box">
               <div class="icon"><a href=""><i class="favicon"></i></a></div>
               <h4 class="title"><a href="">Jardin Encantado</a></h4>
-              <p class="description">Delicada fragancia de flores blancas que se mezclan con la profundidad natural del
-                cedro y el pino.</p>
+              <p class="description">Delicada fragancia de flores blancas que se
+                mezclan con la profundidad natural del cedro y el pino.</p>
             </div>
           </div>
 
@@ -306,28 +310,29 @@
             <div class="box">
               <div class="icon"><a href=""><i class="favicon"></i></a></div>
               <h4 class="title"><a href="">Huella de Vida</a></h4>
-              <p class="description">Notas calidas, terrosas y profundas derivadas de maderas y resinas dejan su huella
-                de vida en cada rincon.</p>
+              <p class="description">Notas calidas, terrosas y profundas derivadas de
+                maderas y resinas dejan su huella de vida en cada rincon.</p>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6" data-aos="zoom-in">
             <div class="box">
               <div class="icon"><a href=""><i class="favicon"></i></a></div>
               <h4 class="title"><a href="">Aurea Hervacea</a></h4>
-              <p class="description">Plantas aromaticas se entremezclan en una danza de aromas nuevos. La frescura del
-                campo y naturaleza.</p>
+              <p class="description">Plantas aromaticas se entremezclan en una danza
+                de aromas nuevos. La frescura del campo y naturaleza.</p>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6" data-aos="zoom-in">
             <div class="box">
               <div class="icon"><a href=""><i class="favicon"></i></a></div>
               <h4 class="title"><a href="">Rincones Frutales</a></h4>
-              <p class="description">Donde habitan la cremosidad del coco, hojas recien cortadas, jugocidad del melon.
-                Sensacion alegre de verano.</p>
+              <p class="description">Donde habitan la cremosidad del coco, hojas recien
+                cortadas, jugocidad del melon. Sensacion alegre de verano.</p>
             </div>
           </div>
         </div>
-
       </div>
     </section><!-- FIN SERVICIOS -->
 
@@ -459,7 +464,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
 
-            <!-- Sign Up Form -->
+            <!-- FORMULARIO DE REGISTRO -->
             <div class="form-container sign-up">
               <form id="clientLoginForm">
                 <h1 style="color:#333;">Registrarse</h1>
@@ -563,11 +568,6 @@
       </div>
     </div>
   </footer><!-- FIN PIE DE PAGINA -->
-
-  <!-- Sticky Hamburger Menu -->
-  <button type="button" id="sticky-hamburger" class="sticky-hamburger">
-    <i class="fa fa-bars"></i>
-  </button>
 
   <!-- Sidebar Menu -->
   <div id="sticky-sidebar" class="sticky-sidebar">

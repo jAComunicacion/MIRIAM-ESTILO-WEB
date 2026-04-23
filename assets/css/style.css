@@ -57,35 +57,9 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff url("../img/preloader.svg") no-repeat center center;
 }
 
-/* Boton de Ascenso al tope */
+/* Boton de Ascenso al tope — deshabilitado, reemplazado por botonera flotante */
 .back-to-top {
-  position: fixed;
-  display: none;
-  background: rgba(0, 0, 0, 0.2);
-  color: var(--blanco);
-  padding: 6px 12px 9px 12px;
-  font-size: 16px;
-  border-radius: 2px;
-  right: 15px;
-  bottom: 15px;
-  transition: background 0.5s;
-}
-
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 15px;
-  }
-}
-
-.back-to-top:focus {
-  background: rgba(48, 1, 136, 0.2);
-  color: var(--blanco);
-  outline: none;
-}
-
-.back-to-top:hover {
-  background: var(--turquesa);
-  color: var(--blanco);
+  display: none !important;
 }
 
 /*--------------------------------------------------------------
@@ -397,20 +371,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-/* Barra de Menu en tamaño Mobil */
+/* Barra de Menu en tamaño Mobil — deshabilitado, reemplazado por botonera flotante */
 #mobile-nav-toggle {
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 999;
-  margin: 20px 20px 0 0;
-  border: 0;
-  background: none;
-  font-size: 24px;
-  display: none;
-  transition: all 0.4s;
-  outline: none;
-  cursor: pointer;
+  display: none !important;
 }
 
 #mobile-nav-toggle i {
@@ -1384,14 +1347,6 @@ section {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .sticky-hamburger {
-    top: 60px;
-    right: 60px;
-    width: 60px;
-    height: 60px;
-    font-size: 30px;
-  }
-  
   .sticky-sidebar {
     width: 80%;
     right: -80%;
@@ -1400,4 +1355,118 @@ section {
   .sidebar-nav li a {
     font-size: 30px;
   }
+}
+
+/*--------------------------------------------------------------
+# Botonera Flotante Lateral Derecha
+--------------------------------------------------------------*/
+.floating-button-bar {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.floating-button-bar.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.floating-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  color: var(--blanco);
+  line-height: 1;
+}
+
+.floating-btn:hover {
+  transform: scale(1.12);
+}
+
+.floating-btn.btn-menu {
+  background-color: var(--primary);
+}
+
+.floating-btn.btn-menu:hover {
+  background-color: var(--turquesa);
+}
+
+.floating-btn.btn-whatsapp {
+  background-color: var(--verde);
+}
+
+.floating-btn.btn-whatsapp:hover {
+  background-color: #3d8b40;
+}
+
+.floating-btn.btn-login {
+  background-color: var(--turquesa);
+}
+
+.floating-btn.btn-login:hover {
+  background-color: var(--primary);
+}
+
+.floating-btn.btn-top {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.floating-btn.btn-top:hover {
+  background-color: var(--turquesa);
+}
+
+@media (max-width: 768px) {
+  .floating-button-bar {
+    right: 10px;
+    gap: 8px;
+  }
+
+  .floating-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Botón INGRESAR en NavBar
+--------------------------------------------------------------*/
+.nav-menu .btn-ingresar {
+  margin-left: 8px;
+}
+
+.nav-menu .btn-ingresar a {
+  background-color: var(--verde);
+  color: var(--blanco) !important;
+  padding: 7px 22px 7px 22px !important;
+  border-radius: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 13px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-menu .btn-ingresar a:hover {
+  background-color: var(--primary) !important;
+  color: var(--blanco) !important;
+}
+
+.nav-menu .btn-ingresar > a:before {
+  display: none;
 }

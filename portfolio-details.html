@@ -5,32 +5,62 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Miriam Schild Productos </title>
+  <title>Miriam Schild Productos</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="tus-credenciales-gsc" />
+
+  <!-- Google Analytics 4 (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+    rel="stylesheet">
 
   <!-- Archivos MIRIAM CSS -->
   <link href="assets/miriam/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/miriam/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="assets/miriam/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/miriam/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/miriam/venobox/venobox.css" rel="stylesheet">
   <link href="assets/miriam/aos/aos.css" rel="stylesheet">
 
-
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/form.css" rel="stylesheet">
 
 </head>
 
 <body>
+
+  <!-- Botonera Flotante Lateral Derecha -->
+  <div class="floating-button-bar" id="floatingButtonBar">
+    <button class="floating-btn btn-menu" id="btnMenuFloating" aria-label="Menú">
+      <i class="bx bx-menu"></i>
+    </button>
+    <button class="floating-btn btn-whatsapp" id="btnWhatsappFloating" aria-label="WhatsApp">
+      <i class="bx bxl-whatsapp"></i>
+    </button>
+    <button class="floating-btn btn-login" id="btnLoginFloating" aria-label="Ingresar">
+      <i class="bx bxs-lock"></i>
+    </button>
+    <button class="floating-btn btn-top" id="btnTopFloating" aria-label="Ir arriba">
+      <i class="bx bx-chevron-up"></i>
+    </button>
+  </div>
 
   <!-- ======= ENCABEZADO ======= -->
   <header id="header">
@@ -40,18 +70,15 @@
         <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
       </div>
 
-           <nav id="nav-menu-container">
+      <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="index.html">Home</a></li>
-          <li><a href="#about">Inicio</a></li>
-          <li><a href="#services">Servicios</a></li>
-          <li><a href="#portfolio">Portafolio</a></li>
-          <li><a href="#team">Somos</a></li>
-          <li><a href="#contact">Conversamos</a></li>                  
+          <li><a href="index.html#portfolio">Productos</a></li>
+          <li><a href="index.html#services">Colecciones</a></li>
+          <li class="btn-ingresar"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-toggle="modal" data-target="#loginModal">INGRESAR</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
-  </header><!-- End Header -->
+  </header><!-- FIN ENCABEZADO -->
 
   <main id="main">
 
@@ -60,15 +87,15 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Portfolio Details</h2>
-          <ol>
+          <h2>Colecciones Miriam Schild</h2>
+          <!-- <ol>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="portfolio.html">Productos</a></li>
             <li>Detalles de Producto</li>
           </ol>
-        </div>
+        </div>-->
 
-      </div>
+        </div>
     </section><!-- Breadcrumbs Section -->
 
     <!-- ======= Portfolio Details Section ======= -->
@@ -82,28 +109,133 @@
             <img src="assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
           </div>
 
-          <div class="portfolio-info">
-            <h3>Project information</h3>
+          <!-- <div class="portfolio-info">
+            <h3>Detalle Productos</h3>
             <ul>
               <li><strong>Category</strong>: Web design</li>
               <li><strong>Client</strong>: ASU Company</li>
               <li><strong>Project date</strong>: 01 March, 2020</li>
               <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
             </ul>
-          </div>
+          </div>-->
 
         </div>
 
         <div class="portfolio-description">
-          <h2>Esta pagina es un detalle de Producto</h2>
+          <h2>Fragancias que perduran</h2>
           <p>
-            Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+            Con experiencia y gran pasión, desarrollamos una propuesta que reúne salud y bienestar personal a través de
+            la aromatización.
+            La marca está íntimamente compro-metida en llevar los aromas perfectos a tu hogar y entorno.
+            Se trata de sensaciones y emociones que nos remiten a nuestra memoria olfativa única y personal, mental,
+            espiritual y afectiva.
+            Perfumar íntegramente el ambiente con nuestras fragancias hace que el aroma recorra, se ancle y se perciba
+            en todos los rincones, dándole una identidad memorable a tus espacios.
           </p>
         </div>
       </div>
-    </section><!-- FIN Seccion DEtalles del Protafolios -->
+    </section><!-- FIN Seccion Detalles del PORTAFOLIOS -->
 
   </main><!-- End #main -->
+
+  <!-- VENTANA MODAL :Ingreso para Clientes -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content" style="background: transparent; border: none;">
+        <div class="modal-body p-0">
+          <div class="auth-modal-container" id="auth-modal-container">
+            <!-- Close button for the modal -->
+            <button type="button" class="close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"
+              style="position: absolute; right: 20px; top: 15px; z-index: 1001; background: none; border: none; font-size: 24px; color: #333; opacity: 0.5;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <!-- Sign Up Form -->
+            <div class="form-container sign-up">
+              <form id="clientLoginForm">
+                <h1 style="color:#333;">Registrarse</h1>
+                <div class="social-icons">
+                  <a href="#" class="icon btnGoogleLogin"><i class="fa-brands fa-google"></i></a>
+                  <a href="#" class="icon btnFacebookLogin"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+                <span>o usa tu email para registrarte</span>
+                <input type="text" id="clientName" placeholder="Nombre" required>
+                <input type="text" id="clientSurname" placeholder="Apellido" required>
+                <input type="email" id="clientEmail" placeholder="Email" required>
+                <input type="text" id="clientWapp" placeholder="WhatsApp (ej: +549...)" required>
+                <input type="password" id="clientPass" placeholder="Contraseña" required>
+                <button type="button" id="btnProcesarDatos">Registrar</button>
+                <div class="mobile-toggle-link" style="display: none; margin-top: 15px; font-size: 13px; color: #666;">
+                  ¿Ya tienes cuenta? <a href="#" onclick="document.getElementById('login').click(); return false;"
+                    style="color: #512da8; font-weight: bold;">Ingresar</a>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- Sign In Form -->
+            <div class="form-container sign-in">
+              <form id="formIngresarSolo">
+                <h1 style="color: #333;">Ingresar</h1>
+                <div class="social-icons">
+                  <a href="#" class="icon btnGoogleLogin"><i class="fa-brands fa-google"></i></a>
+                  <a href="#" class="icon btnFacebookLogin"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="#" class="icon btnInstagramLogin"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <span>Usar tu email para entrar</span>
+                <input type="text" id="loginUserLog" placeholder="Email o WhatsApp" required>
+                <input type="password" id="loginPassLog" placeholder="Contraseña" required>
+                <a href="#" id="btnOlvidasteClave">¿Olvidaste la clave?</a>
+                <button type="button" id="btnIngresarSubmit">INGRESAR</button>
+                <div class="mobile-toggle-link" style="display: none; margin-top: 15px; font-size: 13px; color: #666;">
+                  ¿No tienes cuenta? <a href="#" onclick="document.getElementById('register').click(); return false;"
+                    style="color: #512da8; font-weight: bold;">Regístrate</a>
+                </div>
+
+              </form>
+            </div>
+
+            <!-- Paso 2: Verificación de Código (para compatibilidad con login.js) -->
+            <div id="clientVerifyStep"
+              style="display:none; position: absolute; top:0; left:0; width:100%; height:100%; background: white; z-index: 1002; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center;">
+              <h2 style="color: #333; margin-bottom: 20px;">Verificación</h2>
+              <p style="color: #666;">Hemos enviado un código para verificar.</p>
+              <div class="w-100 mb-4" id="groupCodigoEmail">
+                <input type="text" id="codigoEmail" placeholder="Ingresa el código aquí *" required
+                  style="background-color: #eee; border:none; padding: 10px 15px; border-radius: 8px; width: 100%;">
+              </div>
+              <button type="button" id="btnVerificarCodigo"
+                style="background-color: #512da8; color: #fff; padding: 10px 45px; border-radius: 8px; border:none; cursor:pointer; text-transform: uppercase; font-weight: 600;">Verificar
+                e Ingresar</button>
+              <button type="button" id="btnVolverLogin"
+                style="background: none; border: none; color: #333; margin-top: 15px; cursor: pointer;">Volver</button>
+            </div>
+
+            <!-- Empty elements for login.js compatibility -->
+            <div id="loginTab" style="display:none;"></div>
+            <div id="loginTabContent" style="display:none;"></div>
+
+            <!-- Toggle Panels -->
+            <div class="toggle-container">
+              <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                  <h1>¡Hola!</h1>
+                  <p>Ingresa con tu email y clave a tu lugar personal de nuestra web</p>
+                  <button class="hidden" id="login">Ingresar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                  <h1>¡Bienvenidos!</h1>
+                  <p>Registrate con tus datos personales para utilizar todas las funciones del sitio</p>
+                  <button class="hidden" id="register">Registrarse</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ======= PIE DE PAGINA ======= -->
   <footer id="footer">
@@ -113,19 +245,33 @@
       </div>
     </div>
 
-  <div class="container">
+    <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>MiriamSchild® </strong>2025
+        &copy; Copyright <strong>MiriamSchild® </strong>2026
       </div>
       <div class="credits">
-        designed by <a href="">jA Comunicacion</a>
+        designed by <a href="">jA Design&Marketing®</a>
       </div>
     </div>
   </footer><!-- FIN PIE DE PAGINA -->
 
+  <!-- Sidebar Menu -->
+  <div id="sticky-sidebar" class="sticky-sidebar">
+    <div class="sidebar-header">
+      <button type="button" class="sidebar-close">&times;</button>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#about">Inicio</a></li>
+      <li><a href="#portfolio">Productos</a></li>
+      <li><a href="#services">Colecciones</a></li>
+      <li><a href="#contact">Conversamos</a></li>
+    </ul>
+  </div>
+
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-<!-- Miriam JS Files -->
+  <!-- Miriam JS Files -->
   <script src="assets/miriam/jquery/jquery.min.js"></script>
   <script src="assets/miriam/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/miriam/jquery.easing/jquery.easing.min.js"></script>
@@ -140,7 +286,28 @@
   <script src="assets/miriam/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="assets/js/api-config.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/login.js"></script>
+  <script src="assets/js/form.js"></script>
+
+</body>
+
+<!-- ======= Modal de Notificación Personalizado (reemplaza alert()) ======= -->
+<div id="customAlertOverlay" role="alertdialog" aria-modal="true" aria-labelledby="customAlertMsg">
+  <div id="customAlertBox">
+    <div class="alert-header">
+      <div class="alert-icon" id="customAlertIcon">ℹ</div>
+      <span class="alert-site">miriamschild.com.ar</span>
+    </div>
+    <div class="alert-body">
+      <p id="customAlertMsg"></p>
+    </div>
+    <div class="alert-footer">
+      <button id="btnCustomAlertOk" type="button">Aceptar</button>
+    </div>
+  </div>
+</div>
 
 </body>
 
